@@ -25,16 +25,34 @@ namespace WpfContact
 			InitializeComponent();
 		}
 
-		private void onClickBtnContactAdd(object sender, RoutedEventArgs e)
+		private void OnClickBtnContactAdd(object sender, RoutedEventArgs e)
 		{
 			if (string.IsNullOrEmpty(txtContactName.Text))
+			{
+				MessageBox.Show("Please enter a name for the contact");
 				return;
+			}
+				
 
-			if (lstNames.Items.Contains(txtContactName.Text))
+			if (string.IsNullOrEmpty(txtContactPhone.Text))
+			{
+				MessageBox.Show("Please enter a phone number for the contact");
 				return;
+			}
+				
 
-			lstNames.Items.Add(txtName.Text);
-			txtName.Clear();
+			string contact = $"{txtContactName.Text.Trim()} ({txtContactPhone.Text.Trim()})";
+
+			if (lstNames.Items.Contains(contact))
+			{
+				MessageBox.Show("This contact already exist");
+				return;
+			}
+
+			lstNames.Items.Add(contact);
+
+			txtContactName.Clear();
+			txtContactPhone.Clear();
 		}
 	}
 }
