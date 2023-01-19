@@ -24,6 +24,9 @@ namespace WpfContact
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			lstNames.Items.Add("John Doe (1234)");
+			lstNames.Items.Add("Jane Doe (4567)");
 		}
 
 		private void OnClickBtnContactAdd(object sender, RoutedEventArgs e)
